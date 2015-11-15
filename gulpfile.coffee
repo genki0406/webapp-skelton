@@ -5,8 +5,6 @@ coffee = require('gulp-coffee')
 browserSync = require('browser-sync')
 plumber = require('gulp-plumber')
 
-scss_path = './app/styles/**/*.scss'
-
 gulp.task 'server', ->
   browserSync.init
     server:
