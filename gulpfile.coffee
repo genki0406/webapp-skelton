@@ -4,6 +4,8 @@ jade = require('gulp-jade')
 coffee = require('gulp-coffee')
 browserSync = require('browser-sync')
 plumber = require('gulp-plumber')
+bowerFiles  = require "main-bower-files"
+concat      = require 'gulp-concat'
 
 gulp.task 'server', ->
   browserSync.init
@@ -27,6 +29,13 @@ gulp.task 'scss', ->
     .pipe sass()
     .pipe gulp.dest './public'
 
+gulp.task 'vendor', ->
+  gulp
+    .src bowerFiles()
+    .pipe plumber()
+    .pipe concat('vendor.js')
+    .pipe gulp.dest('./public')
+
 gulp.task 'jade', ->
   gulp
     .src './app/*.jade'
@@ -39,5 +48,5 @@ gulp.task 'watch', ['build', 'server'], ->
   gulp.watch ['./app/*.jade'], ['jade', 'reload']
   gulp.watch ['./app/scripts/**/*.coffee'], ['coffee', 'reload']
 
-gulp.task 'build', ['jade', 'coffee', 'scss']
+gulp.task 'build', ['jade', 'coffee', 'scss', 'vendor']
 gulp.task 'default', ['build']

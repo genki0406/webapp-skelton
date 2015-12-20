@@ -1,0 +1,19 @@
+{
+  "name": "gulp-webapp-skeleton",
+  "version": "0.0.0",
+  "description": "web app skelton",
+  "authors": [
+    "Genki Fukusaki <genki0406@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
